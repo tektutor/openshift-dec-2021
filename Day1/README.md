@@ -167,6 +167,31 @@ sudo systemctl status docker
 ```
 Type letter q to come out of status command.
 
+The expected output is
+<pre>
+[jegan@tektutor openshift-dec-2021]$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
+   Active: active (running) since Mon 2021-12-06 01:35:16 PST; 12s ago
+     Docs: https://docs.docker.com
+ Main PID: 41750 (dockerd)
+    Tasks: 8
+   Memory: 33.9M
+   CGroup: /system.slice/docker.service
+           └─41750 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Dec 06 01:35:14 tektutor dockerd[41750]: time="2021-12-06T01:35:14.817136339-08:00" level=warning msg="Your kernel does >
+Dec 06 01:35:14 tektutor dockerd[41750]: time="2021-12-06T01:35:14.817168970-08:00" level=warning msg="Your kernel does >
+Dec 06 01:35:14 tektutor dockerd[41750]: time="2021-12-06T01:35:14.817307002-08:00" level=info msg="Loading containers: >
+Dec 06 01:35:15 tektutor dockerd[41750]: time="2021-12-06T01:35:15.762666865-08:00" level=info msg="Default bridge (dock>
+Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.011870991-08:00" level=info msg="Firewalld: interface>
+Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.217181609-08:00" level=info msg="Loading containers: >
+Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.243763123-08:00" level=info msg="Docker daemon" commi>
+Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.243976877-08:00" level=info msg="Daemon has completed>
+Dec 06 01:35:16 tektutor systemd[1]: Started Docker Application Container Engine.
+Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.285333990-08:00" level=info msg="API listen on /var/r>
+</pre>
+
 We need to add the rps user into the docker user group in order to gain access to Docker commands
 ```
 sudo usermod -aG docker rps
