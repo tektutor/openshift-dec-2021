@@ -194,8 +194,10 @@ Dec 06 01:35:16 tektutor dockerd[41750]: time="2021-12-06T01:35:16.285333990-08:
 
 We need to add the rps user into the docker user group in order to gain access to Docker commands
 ```
+id
 sudo usermod -aG docker rps
 newgrp docker
+id
 ```
 
 You may now verify, if you are able to list Docker images
