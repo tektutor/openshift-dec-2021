@@ -104,4 +104,26 @@ Hyperthreading (AMD equivalent is called SMT )
    - Linux machines
        can only run linux application containers and not windows application containers
        
- 
+ ### What is a Docker Image ?
+ - similar OS ISO images
+ - similar VMWare OS Images
+ - specficaton of a Docker Container
+ - Blueprint of a Docker Container
+     - Whatever tools and libraries are required for your application they shall be installed here
+ - mysql:8 Docker Image
+
+### What is a Docker Container?
+- is an instance of a Docker Image
+- it is just an application process not an OS, but it like one
+- containers running in the same system, they all share the Host OS kernel
+- each container gets its own Network Stack ( 7 OSI Layers )
+- each container has its shell
+- each container has its filesytem
+- each container has its Network Inferface Card(NIC) 
+- each container has its own MAC-id for the network card
+- with a single image, you could create as many container as you want
+- With the mysql:8 docker image, you can create running mysql:8 containers which acquires an Ip address, hostname
+  and unique container ID and name
+  
+  
+
