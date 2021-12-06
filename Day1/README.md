@@ -60,8 +60,10 @@ Hyperthreading (AMD equivalent is called SMT )
 2048 * 100 servers = 2,04,800 Virtual Machines can be deployed in 100 servers.
 
 ### High-level Architecture of Type 1 - Hypervisor
-![alt text](https://github.com/tektutor/openshift-dec-2021/blob/main/Day1/OpenShift%20Dec%202021.png)
+![Type1](https://github.com/tektutor/openshift-dec-2021/blob/main/Day1/OpenShift%20Dec%202021.png)
 
+### High-level Architecture of Type 2 - Hypervisor
+![Type2](https://github.com/tektutor/openshift-dec-2021/blob/main/Day1/image2.png)
 
 
 ### Containers
