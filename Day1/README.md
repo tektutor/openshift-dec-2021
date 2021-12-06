@@ -455,7 +455,7 @@ Remove the db1 container
 docker rm -f db1
 ```
 Create a new container
-``
+```
 docker run -d --name db2 --hostname db2 -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ```
 
