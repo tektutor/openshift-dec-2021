@@ -165,6 +165,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl status docker
 ```
+Type letter q to come out of status command.
 
 We need to add the rps user into the docker user group in order to gain access to Docker commands
 ```
