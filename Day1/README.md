@@ -49,15 +49,15 @@ Processor with 512 Physical Cores
 
 How many Virtual Machine(Guest OS) you can deploy and run them at the same time?
 
-512 Virtual Machine - assuming 1 Physical CPU core assigned per VM
+A single Virtual Machine with 512 Cores - assuming 1 Physical CPU core assigned per VM
 
 Hyperthreading (AMD equivalent is called SMT )
-	- each processor support two virtual cores per physical core
+	- each processor supports two virtual cores per physical core
 	- latest - each physical processor supports upto 4 virtual cores
 
-512 * 4 = 2048 Virtual Machines
+512 * 4 = 2048 Virtual Machines can be deployed in a single server
 
-2048 * 100 = 204800 Virtual Machines
+2048 * 100 servers = 2,04,800 Virtual Machines can be deployed in 100 servers.
 
 
 ### Containers
