@@ -358,6 +358,18 @@ exit
 This also will exit the container as the only the application that was running inside the container was shell and
 you exited that just now :)
 
+### Creating container as daemon(background) mode
+```
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:16.04 bash
+docker run -dit --name ubuntu2 --hostname ubuntu2 ubuntu:16.04 bash
+```
+
+### Getting inside a running container
+```
+docker exec -it ubuntu1 bash
+```
+Exiting from the bash above won't terminate the container.
+
 ### Delete a single container that is in exited state
 ```
 docker rm <container-id>
@@ -387,3 +399,9 @@ docker rm $(docker ps-aq)
 docker rm -f $(docker ps-aq)
 ```
 
+## Managing Images
+
+### Pulling an image from docker hub to local
+```
+docker pull hello-world:latest
+```
