@@ -104,7 +104,11 @@ Hyperthreading (AMD equivalent is called SMT )
    - Linux machines
        can only run linux application containers and not windows application containers
        
- ### What is a Docker Image ?
+### Which type of applications can be containerized?
+- any blocking application is an ideal candidate to containerize
+  e.g: REST API, SOAP API, Microservice, app servers, web servers, database servers, etc
+
+### What is a Docker Image ?
  - similar OS ISO images
  - similar VMWare OS Images
  - specficaton of a Docker Container
@@ -382,3 +386,4 @@ docker rm $(docker ps-aq)
 ```
 docker rm -f $(docker ps-aq)
 ```
+
