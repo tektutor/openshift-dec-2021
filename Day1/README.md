@@ -111,7 +111,7 @@ Hyperthreading (AMD equivalent is called SMT )
        can only run linux application containers and not windows application containers
 
 ### Docker High-level Architecture
-![Docker](docker.png)
+![Docker](Docker.png)
 
 
 ### Which type of applications can be containerized?
