@@ -223,3 +223,66 @@ docker.io/library/hello-world:latest
 REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 hello-world   latest    feb5d9fea6a5   2 months ago   13.3kB
 </pre>
+
+### Finding details about your docker installation
+```
+docker info
+```
+
+The expected output is
+<pre>
+[jegan@tektutor openshift-dec-2021]$ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  app: Docker App (Docker Inc., v0.9.1-beta3)
+  buildx: Build with BuildKit (Docker Inc., v0.6.3-docker)
+  scan: Docker Scan (Docker Inc., v0.9.0)
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 1
+ Server Version: 20.10.11
+ Storage Driver: overlay2
+  Backing Filesystem: xfs
+  Supports d_type: true
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc version: v1.0.2-0-g52b36a2
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.18.0-240.el8.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 15.43GiB
+ Name: tektutor
+ ID: 43QG:BBQJ:GYAN:B6OS:OYF2:5HRI:LEY6:IIUL:JKJP:T5N3:OG7N:37F4
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+</pre>
