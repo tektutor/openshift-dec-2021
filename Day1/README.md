@@ -353,3 +353,32 @@ exit
 ```
 This also will exit the container as the only the application that was running inside the container was shell and
 you exited that just now :)
+
+### Delete a single container that is in exited state
+```
+docker rm <container-id>
+docker rm <container-name>
+```
+
+### Graciously deleting a single container that is running 
+```
+docker stop <container-id>
+docker rm <container-id>
+```
+
+### Forcibly deleting a single container that is running
+```
+docker rm -f <container-id>
+docker rm -f <container-name>
+```
+
+### Deleting multiple running containers graciously
+```
+docker stop $(docker ps -q)
+docker rm $(docker ps-aq)
+```
+
+### Deleting multiple running containers forcibly
+```
+docker rm -f $(docker ps-aq)
+```
