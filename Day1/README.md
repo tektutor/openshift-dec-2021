@@ -405,3 +405,8 @@ docker rm -f $(docker ps-aq)
 ```
 docker pull hello-world:latest
 ```
+
+### Deleting an image from Local Docker Registry
+```
+docker rmi hello-world:latest
+```
