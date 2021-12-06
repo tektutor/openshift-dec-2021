@@ -324,3 +324,32 @@ docker ps
 ```
 docker ps -a
 ```
+
+### Creating an ubuntu container in foreground(interactive) mode
+The command below will create a new container by 'ubuntu1' and take us inside the container's bash shell
+
+```
+docker run -it --name ubuntu1 --hostname ubuntu1 ubuntu:16.04 /bin/bash
+```
+
+Listing files and directories inside the container
+```
+ls
+```
+
+Finding IP address of the container
+```
+hostname -i
+```
+
+Finding the hostname of the container
+```
+hostname
+```
+
+If you wish you come out of the container, you may type
+```
+exit
+```
+This also will exit the container as the only the application that was running inside the container was shell and
+you exited that just now :)
