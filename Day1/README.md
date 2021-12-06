@@ -149,3 +149,30 @@ In the above command
 - each container gets a unique ID and name
 - if you don't assign a name, then Docker Server assigns a random name
 - if you don't assign a hostname, then Docker Server assigns the container ID as the hostname for the container
+
+### Installing Docker in CentOS 8
+Detailed instruction can be found at official page https://docs.docker.com/engine/install/centos/
+
+```
+ sudo yum install -y yum-utils
+ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+ sudo yum install -y docker-ce --allowerasing
+```
+
+We need to enable and start the Docker server as a service
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+```
+
+We need to add the rps user into the docker user group in order to gain access to Docker commands
+```
+sudo usermod -aG docker rps
+newgrp docker
+```
+
+You may now verify, if you are able to list Docker images
+```
+docker images
+```
