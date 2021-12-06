@@ -10,7 +10,7 @@ You need to add the below line just below line no 100
 rps ALL=(ALL) ALL
 </pre>
 
-Also you need to uncommend line no 111 as shown below
+Also you need to uncomment line no 111 as shown below
 <pre>
 %wheel  ALL=(ALL) NOPASSWD: ALL
 </pre>
