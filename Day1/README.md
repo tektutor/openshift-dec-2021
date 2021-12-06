@@ -277,7 +277,7 @@ Server:
  Total Memory: 15.43GiB
  Name: tektutor
  ID: 43QG:BBQJ:GYAN:B6OS:OYF2:5HRI:LEY6:IIUL:JKJP:T5N3:OG7N:37F4
- Docker Root Dir: /var/lib/docker
+ <b>Docker Root Dir: /var/lib/docker</b>
  Debug Mode: false
  Registry: https://index.docker.io/v1/
  Labels:
@@ -286,3 +286,5 @@ Server:
   127.0.0.0/8
  Live Restore Enabled: false
 </pre>
+
+The line highted above is the location where your Docker Local Registry is maintained.
