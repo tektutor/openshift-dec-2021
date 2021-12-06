@@ -59,6 +59,9 @@ Hyperthreading (AMD equivalent is called SMT )
 
 2048 * 100 servers = 2,04,800 Virtual Machines can be deployed in 100 servers.
 
+### High-level Architecture of Type 1 - Hypervisor
+
+
 
 ### Containers
 - lightweight application virtualization technology
