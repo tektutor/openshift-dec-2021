@@ -113,6 +113,8 @@ Hyperthreading (AMD equivalent is called SMT )
 ### Docker High-level Architecture
 ![Docker](Docker.png)
 
+### Docker Client/Server Architecture
+![Client Server Architecture](https://github.com/tektutor/openshift-dec-2021/blob/main/Day1/ClientServerDocker.png)
 
 ### Which type of applications can be containerized?
 - any blocking application is an ideal candidate to containerize
