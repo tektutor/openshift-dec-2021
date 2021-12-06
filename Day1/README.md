@@ -125,5 +125,27 @@ Hyperthreading (AMD equivalent is called SMT )
 - With the mysql:8 docker image, you can create running mysql:8 containers which acquires an Ip address, hostname
   and unique container ID and name
   
+- Docker Images is broken down into many layers
+- the number of layers varies from one Docker Image to the other
+- some Images has just one layer, while others might have many
+- Docker uses a Union File System, where many layers combined forms the file system
+- Docker Image Layers can be shared/referred by one or more Docker Images
+- Docker Image is a JSON file that refers one or Docker Image Layers
+- Docker Image/Layers they get a unique ID
+- Docker Image ID or the Docker Layer ID is a 256 HASH (SHA-1)
   
+### Creating a container
+```
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:16.04 /bin/bash
+```
+The above command will create a new container and runs that.
 
+In the above command 
+  - ubuntu1 is the name of the container 
+  - ubuntu1 is also the hostname
+  - ubuntu:16.04 is the Docker Image
+  /bin/bash - application that would be started when the container starts running
+
+- each container gets a unique ID and name
+- if you don't assign a name, then Docker Server assigns a random name
+- if you don't assign a hostname, then Docker Server assigns the container ID as the hostname for the container
