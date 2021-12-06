@@ -204,3 +204,22 @@ You may now verify, if you are able to list Docker images
 ```
 docker images
 ```
+
+### Downloading docker image from Docker Hub(Remote Registry)
+
+```
+docker pull hello-world:latest
+```
+
+The expected output is
+<pre>
+jegan@tektutor openshift-dec-2021]$ <b>docker pull hello-world:latest</b>
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete 
+Digest: sha256:cc15c5b292d8525effc0f89cb299f1804f3a725c8d05e158653a563f15e4f685
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+[jegan@tektutor openshift-dec-2021]$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+hello-world   latest    feb5d9fea6a5   2 months ago   13.3kB
+</pre>
