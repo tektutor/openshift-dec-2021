@@ -410,3 +410,75 @@ docker pull hello-world:latest
 ```
 docker rmi hello-world:latest
 ```
+
+### Volume mounting - storing application data externally without using container storage
+```
+docker run -d --name db1 --hostname db1 -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+```
+
+You may list the mysql container
+```
+docker ps -f "name=db1"
+```
+
+You may get inside the mysql db1 container
+```
+docker exec -it db1 sh
+```
+
+Connecting to mysql shell
+```
+mysql -u root -p
+```
+When prompted for password, type 'root' without quotes
+
+In the sql prompt, you may type the below
+```
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE Training (id int, name VARCHAR(30), duration VARCHAR(30));
+INSERT INTO Training VALUES (1, "Mastering C++ Programming", "5 Days"));
+SELECT * FROM Training;
+```
+
+You may now exit the mysql prompt
+```
+exit
+```
+You may now exit from the container
+```
+exit
+```
+Remove the db1 container
+```
+docker rm -f db1
+```
+Create a new container
+``
+docker run -d --name db2 --hostname db2 -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+```
+
+You may list the mysql container
+```
+docker ps -f "name=db2"
+```
+
+You may get inside the mysql db1 container
+```
+docker exec -it db2 sh
+```
+
+Connecting to mysql shell
+```
+mysql -u root -p
+```
+When prompted for password, type 'root' without quotes
+
+In the sql prompt, you may type the below
+```
+SHOW DATABASES;
+USE tektutor;
+SELECT * FROM Training;
+```
+The expectation is that you should still be able to access tektutor database and the Training table content.
