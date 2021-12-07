@@ -225,3 +225,24 @@ Check the number of nginx pods running after scaling down
 ```
 kubectl get po
 ```
+
+### What happens when you create a deployment in K8s
+```
+kubectl create deployment nginx --image=nginx:1.18
+```
+
+kubectl is a client tool that makes REST calls to API Server which is running in master node
+
+1. Kubectl send a REST request to create a new deployment by name nginx whose image is nginx:1.18
+2. API Server creates a Deployment entry in the etcd datastore
+3. API Server triggers an event something like New Deployment created
+4. Deployment Controller which is part of Controller Manager controlplane component receives this event.
+   This will further send a REST request to API Server to create a ReplicaSet.
+5. API Server receives the request from Deployment Controller and it creates Pod(s)
+6. API triggers events like New Pod created
+7. Scheduler when it receives New Pod created event, it will find a healthy node which can accomodate this new Pod and notifies the API Server by making a REST call
+8. API server updates this in the Pod entry within etcd
+9. API server triggers an event the Pod Scheduled
+10. The kubelet agent running on the respective node receives this event and checks if the image required to
+    create the Pod is already there in the node, if not kubelet pulls the image from Docker Hub or private docker registry, etc.  Creates the Pod, monitors its health and periodically it keeps reporting the status of all the Pods running on that node to the API Server via REST calls.
+11. API Server receives the REST call from kubelet and updates the respective POD entry in the etcd datastore.
