@@ -575,7 +575,7 @@ http {
         }
     }
 }
-<b>
+</b>
 ```
 The highlighed portion of the code above is the configuration required to make nginx work like a Load Balancer.
 	
