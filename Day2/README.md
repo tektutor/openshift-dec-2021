@@ -96,6 +96,27 @@ access Docker commands as non-root user(rps)
 ```
 minikube start --driver=docker
 ```
+The expected output is
+<pre>
+[jegan@tektutor ~]$ minikube start --driver=docker
+😄  minikube v1.24.0 on Centos 8.3.2011
+✨  Using the docker driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.22.3 preload ...
+    > preloaded-images-k8s-v13-v1...: 1.84 MiB / 501.73 MiB [>__] 0.37    > preloaded-images-k8s-v13-v1...: 7.01 MiB / 501.73 MiB [>__] 1.40    > preloaded-images-k8s-v13-v1...: 11.83 MiB / 501.73 MiB [>_] 2.36    > preloaded-images-k8s-v13-v1...: 16.61 MiB / 501.73 MiB  3.31% 24    > gcr.io/k8s-minikube/kicbase: 0 B [___________________________] ?    > preloaded-images-k8s-v13-v1...: 21.42 MiB / 501.73 MiB  4.27% 24    > gcr.io/k8s-minikube/kicbase: 24.36 KiB / 355.78 MiB [>____] 0.01    > preloaded-images-k8s-v13-v1...: 26.17 MiB / 501.73 MiB  5.22% 24    > gcr.io/k8s-minikube/kicbase: 24.36 KiB / 355.78 MiB [>____] 0.01    > preloaded-images-k8s-v13-v1...: 30.80 MiB / 501.73 MiB  6.14% 24    > gcr.io/k8s-minikube/kicbase: 24.36 KiB / 355.78 MiB  0.01% 40.59    > preloaded-images-k8s-v13-v1...: 35.55 MiB / 501.73 MiB  7.08% 24    > gcr.io/k8s-minikube/kicbase: 24.36 KiB / 355.78 MiB  0.01% 40.59    > preloaded-images-k8s-v13-v1...: 40.45 MiB / 501.73 MiB  8.06% 24    > gcr.io/k8s-minikube/kicbase: 183.85 KiB / 355.78 MiB  0.05% 40.5    > preloaded-images-k8s-v13-v1...: 45.08 MiB / 501.73 MiB  8.98% 24    > gcr.io/k8s-minikube/kicbase: 1.20 MiB / 355.78 MiB  0.34% 167.01    > preloaded-images-k8s-v13-v1...: 48.83 MiB / 501.73 MiB  9.73% 24    > gcr.io/k8s-minikube/kicbase: 2.51 MiB / 355.78 MiB  0.70% 167.01    > preloaded-images-k8s-v13-v1...: 52.23 MiB / 501.73 MiB  10.41% 2    > gcr.io/k8s-minikube/kicbase: 4.04 MiB / 355.78 MiB  1.14% 167.01    >     > preloaded-images-k8s-v13-v1...: 5    > preloaded-images-k8s-v13-v1...: 501.73 MiB / 501.73 MiB  100.00% 19.17 Mi
+    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 7.84 MiB p/
+🔥  Creating docker container (CPUs=2, Memory=3900MB) ...
+🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+💡  kubectl not found. If you need it, try: 'minikube kubectl -- get pods -A'
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+</pre>
 
 ### Troubleshooting
 
