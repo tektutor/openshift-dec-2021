@@ -96,3 +96,11 @@ access Docker commands as non-root user(rps)
 ```
 minikube start --driver=docker
 ```
+
+### Troubleshooting
+
+In case you are getting permission denied error when you attempt this as rps user, then try this
+```
+newgrp docker
+docker images
+```
