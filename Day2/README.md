@@ -125,3 +125,8 @@ In case you are getting permission denied error when you attempt this as rps use
 newgrp docker
 docker images
 ```
+
+### Before you can start using the K8s cluster, you need to install kubectl 
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
