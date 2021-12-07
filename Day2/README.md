@@ -172,3 +172,30 @@ kube-system is the namespace where typically all master node components run(live
 - Kubernetes supports creating K8s objects in two style
     1. Imperative - i.e using CLI commands
     2. Declarative - i.e using YAML(yml) files. This is the recommended approach.
+
+### Deploying nginx in K8s cluster
+
+The below command will deploy 1 nginx Pod in K8s cluster in the default namespace.
+
+```
+kubectl create deployment nginx --image=nginx:1.18
+```
+
+Now you may verify if the deployment is created 
+```
+kubectl get deployments
+kubectl get deployment
+kubectl get deploy
+```
+
+You may also check the replicaset
+```
+kubectl get replicasets
+kubectl get replicaset
+kubectl get rs
+```
+
+You may also check the pods created part of the deployment
+```
+kubectl get po
+```
