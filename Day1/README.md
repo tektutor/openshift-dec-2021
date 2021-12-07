@@ -494,3 +494,124 @@ USE tektutor;
 SELECT * FROM Training;
 ```
 The expectation is that you should still be able to access tektutor database and the Training table content.
+
+### Checking container logs
+```
+docker rm -f $(docker ps -aq)
+docker run -d --name nginx1 --hostname nginx1 -p 8001:80 nginx:1.18
+docker run -d --name nginx2 --hostname nginx2 -p 8002:80 nginx:1.18
+docker run -d --name nginx3 --hostname nginx3 -p 8003:80 nginx:1.18
+```
+
+You may check the IP Address of nginx1, nginx2 and nginx3 containers as shown below
+```
+docker inspect nginx1 | grep IPA
+docker inspect -f "{{.NetworkSettings.IPAddress}}" nginx2
+docker inspect nginx3
+```
+
+You may now access the web page from these containers on the local machine as shown below
+```
+curl localhost:8001
+curl localhost:8002
+curl localhost:8003
+```
+You could as well use the IP Addresses of the container on the local machine
+```
+curl 172.17.0.2
+curl 172.17.0.3
+curl 172.17.0.4
+```
+
+In order to access these web pages from an external machine, you need to find the IP Address of the Host machine
+wherever the containers are running
+```
+ifconfig ens33
+```
+
+Assuming the Host machine IP address is 172.16.95.154, you may access the web pages from nginx1, nginx2 and nginx3 respectively as shown below
+```
+curl 172.16.95.154:8001
+curl 172.16.95.154:8002
+curl 172.16.95.154:8002
+```
+
+### Using nginx container as a Load Balancer
+Let's create an nginx container by name 'lb'
+```
+docker run -d --name lb --hostname lb -p 80:80 nginx:1.18
+```
+We need to configure the lb container to work like a Load Balancer as nginx by default works like a Web Server.
+
+Let's copy the nginx.conf file from lb container to local machine to configure it
+```
+docker cp lb:/etc/nginx/nginx.conf .
+```
+Now let's configure the nginx.conf file as shown below
+
+<pre>
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+<b>
+http {
+    upstream backend {
+        server 172.17.0.3:80;
+        server 172.17.0.4:80;
+        server 172.17.0.5:80;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+</b>
+</pre>
+The highlighed portion of the code above is the configuration required to make nginx work like a Load Balancer.
+	
+Let's now copy the nginx.conf file from local machine back into the lb container
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+```
+We need to restart the lb container to apply the config changes
+```
+docker restart lb
+```
+	
+Let's create 3 nginx containers as web servers
+```
+docker run -d --name web1 --hostname web1 nginx:1.18
+docker run -d --name web2 --hostname web2 nginx:1.18
+docker run -d --name web3 --hostname web3 nginx:1.18
+```
+
+Let's update the index.html page on each container so that we can understand which container is serving the web page
+```
+echo "Server 1" > index.html
+docker cp index.html web1:/usr/share/nginx/html/index.html
+echo "Server 2" > index.html
+docker cp index.html web2:/usr/share/nginx/html/index.html
+echo "Server 3" > index.html
+docker cp index.html web3:/usr/share/nginx/html/index.html
+```
+Now you may access the lb from local machine as
+```
+curl localhost
+curl localhost
+curl localhost
+```
+As you may have understood, you will get the response in a round-robin fashion.
+
+Let's dispose the containers, once we are done with this lab exercise.
+```
+docker rm -f $(docker ps -aq)
+```
