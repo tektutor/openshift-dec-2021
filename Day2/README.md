@@ -86,6 +86,7 @@ Kubernetes Cluster
 The official page with detailed instruction can be found here https://minikube.sigs.k8s.io/docs/start/
 
 ```
+cd /home/rps
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
