@@ -535,3 +535,79 @@ curl 172.16.95.154:8001
 curl 172.16.95.154:8002
 curl 172.16.95.154:8002
 ```
+
+### Using nginx container as a Load Balancer
+Let's create an nginx container by name 'lb'
+```
+docker run -d --name lb --hostname lb -p 80:80 nginx:1.18
+```
+We need to configure the lb container to work like a Load Balancer as nginx by default works like a Web Server.
+
+Let's copy the nginx.conf file from lb container to local machine to configure it
+```
+docker cp lb:/etc/nginx/nginx.conf .
+```
+Now let's configure the nginx.conf file as shown below
+```
+
+```
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+<b>
+http {
+    upstream backend {
+        server 172.17.0.3:80;
+        server 172.17.0.4:80;
+        server 172.17.0.5:80;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+<b>
+```
+The highlighed portion of the code above is the configuration required to make nginx work like a Load Balancer.
+	
+Let's now copy the nginx.conf file from local machine back into the lb container
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+```
+We need to restart the lb container to apply the config changes
+```
+docker restart lb
+```
+	
+Let's create 3 nginx containers as web servers
+```
+docker run -d --name web1 --hostname web1 nginx:1.18
+docker run -d --name web2 --hostname web2 nginx:1.18
+docker run -d --name web3 --hostname web3 nginx:1.18
+```
+
+Let's update the index.html page on each container so that we can understand which container is serving the web page
+```
+echo "Server 1" > index.html
+docker cp index.html web1:/usr/share/nginx/html/index.html
+echo "Server 2" > index.html
+docker cp index.html web2:/usr/share/nginx/html/index.html
+echo "Server 3" > index.html
+docker cp index.html web3:/usr/share/nginx/html/index.html
+```
+Now you may access the lb from local machine as
+```
+curl localhost
+curl localhost
+curl localhost
+```
+As you may have understood, you will get the response in a round-robin fashion.
