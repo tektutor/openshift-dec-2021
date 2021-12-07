@@ -133,3 +133,19 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 ```
+
+Now see if you can access minikube K8s cluster via kubectl
+```
+kubectl get nodes
+```
+
+Checking the K8s node IPs
+```
+kubectl get nodes -o wide
+```
+
+To see the control plane components in master node
+```
+kubectl get po -n kube-system
+```
+kube-system is the namespace where typically all master node components run(live).
