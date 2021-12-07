@@ -82,3 +82,16 @@ Kubernetes Cluster
           - used to boostrap master node
 	  - used to join/unjoin a worker node from K8s cluster
 
+### Setting up minikube K8s cluster
+The official page with detailed instruction can be found here https://minikube.sigs.k8s.io/docs/start/
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+Now let's install minikube, the assumption is docker is already installed on system and you are able to 
+access Docker commands as non-root user(rps)
+```
+minikube start --driver=docker
+```
