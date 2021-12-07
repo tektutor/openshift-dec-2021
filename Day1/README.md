@@ -494,3 +494,44 @@ USE tektutor;
 SELECT * FROM Training;
 ```
 The expectation is that you should still be able to access tektutor database and the Training table content.
+
+### Checking container logs
+```
+docker rm -f $(docker ps -aq)
+docker run -d --name nginx1 --hostname nginx1 -p 8001:80 nginx:1.18
+docker run -d --name nginx2 --hostname nginx2 -p 8002:80 nginx:1.18
+docker run -d --name nginx3 --hostname nginx3 -p 8003:80 nginx:1.18
+```
+
+You may check the IP Address of nginx1, nginx2 and nginx3 containers as shown below
+```
+docker inspect nginx1 | grep IPA
+docker inspect -f "{{.NetworkSettings.IPAddress}}" nginx2
+docker inspect nginx3
+```
+
+You may now access the web page from these containers on the local machine as shown below
+```
+curl localhost:8001
+curl localhost:8002
+curl localhost:8003
+```
+You could as well use the IP Addresses of the container on the local machine
+```
+curl 172.17.0.2
+curl 172.17.0.3
+curl 172.17.0.4
+```
+
+In order to access these web pages from an external machine, you need to find the IP Address of the Host machine
+wherever the containers are running
+```
+ifconfig ens33
+```
+
+Assuming the Host machine IP address is 172.16.95.154, you may access the web pages from nginx1, nginx2 and nginx3 respectively as shown below
+```
+curl 172.16.95.154:8001
+curl 172.16.95.154:8002
+curl 172.16.95.154:8002
+```
