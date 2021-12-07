@@ -550,6 +550,8 @@ docker cp lb:/etc/nginx/nginx.conf .
 Now let's configure the nginx.conf file as shown below
 ```
 
+Configured nginx.conf file
+
 ```
 user  nginx;
 worker_processes  1;
