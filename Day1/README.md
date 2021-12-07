@@ -552,7 +552,7 @@ Now let's configure the nginx.conf file as shown below
 
 Configured nginx.conf file
 
-```
+<pre>
 user  nginx;
 worker_processes  1;
 
@@ -578,7 +578,7 @@ http {
     }
 }
 </b>
-```
+</pre>
 The highlighed portion of the code above is the configuration required to make nginx work like a Load Balancer.
 	
 Let's now copy the nginx.conf file from local machine back into the lb container
