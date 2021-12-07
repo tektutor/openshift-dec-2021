@@ -169,3 +169,6 @@ kube-system is the namespace where typically all master node components run(live
 - application runs within container
 - container has your application and any dependent library or servers, etc
 - container can be created either using Docker or LXC, CRI-O, Rkt, Podman, etc.,
+- Kubernetes supports creating K8s objects in two style
+    1. Imperative - i.e using CLI commands
+    2. Declarative - i.e using YAML(yml) files. This is the recommended approach.
