@@ -246,3 +246,32 @@ kubectl is a client tool that makes REST calls to API Server which is running in
 10. The kubelet agent running on the respective node receives this event and checks if the image required to
     create the Pod is already there in the node, if not kubelet pulls the image from Docker Hub or private docker registry, etc.  Creates the Pod, monitors its health and periodically it keeps reporting the status of all the Pods running on that node to the API Server via REST calls.
 11. API Server receives the REST call from kubelet and updates the respective POD entry in the etcd datastore.
+
+### Creating an NodePort(external) service
+```
+kubectl expose deploy/nginx --type=NodePort --port=80
+```
+
+You can check the servce as below
+```
+kubectl get services
+kubectl get service
+kubectl get svc
+```
+
+You can find more details about ngixn nodeport service
+```
+kubectl describe svc/nginx 
+```
+
+You can access the nodeport service, assuming 31014 is your nodeport
+```
+curl http://<node-ip>:<node-port>
+curl http://192.168.49.2:31014
+```
+
+The other way to access the nodeport service is via its service name(service discovery)
+```
+curl http://<nodeport-servicename>:<service-port>
+curl http://nginx:80
+```
