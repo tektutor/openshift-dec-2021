@@ -295,3 +295,25 @@ curl http://<clusterip-service-cluster-ip>:<service-port>
 curl http://nginx:80
 
 ```
+
+### NodePort Service
+- is an external service
+- generally to access a group of Pods with any external facing services you may create a nodeport service
+- this doesn't cost you as this pure Kubernetes service
+- frontend component or microservice
+- loadbalances a group of similar pods
+- Node Port range used by Kubernets is 30000 - 32767
+- master-node-hostname:node-port ( 192.168.49.2:31200 )
+
+### CluterIP Service
+- is an internal service
+- a cluster of mongodb databases
+- backend component like databases use this type of service
+- loadbalances a group of similar pods
+
+### LoadBalancer service
+- is an external service
+- is used in Cloud environments like AWS, Azure, GCP, Digital Ocean, etc.,
+- For example, in AWS LoadBalancer Services creates a Network Load Balancer with a static IP
+- this incurs additional cost from AWS
+- loadbalances a group of similar pods
