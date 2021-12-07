@@ -317,3 +317,8 @@ curl http://nginx:80
 - For example, in AWS LoadBalancer Services creates a Network Load Balancer with a static IP
 - this incurs additional cost from AWS
 - loadbalances a group of similar pods
+
+### Creating a Pod without Deployment or Replicaset
+```
+kubectl run multitool --image=praqma/network-multitool
+```
