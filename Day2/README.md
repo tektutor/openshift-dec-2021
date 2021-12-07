@@ -82,7 +82,7 @@ Kubernetes Cluster
           - used to boostrap master node
 	  - used to join/unjoin a worker node from K8s cluster
 
-### Setting up minikube K8s cluster
+### Setting up minikube K8s cluster ( rps user )
 The official page with detailed instruction can be found here https://minikube.sigs.k8s.io/docs/start/
 
 ```
