@@ -610,3 +610,8 @@ curl localhost
 curl localhost
 ```
 As you may have understood, you will get the response in a round-robin fashion.
+
+Let's dispose the containers, once we are done with this lab exercise.
+```
+docker rm -f $(docker ps -aq)
+```
