@@ -548,9 +548,6 @@ Let's copy the nginx.conf file from lb container to local machine to configure i
 docker cp lb:/etc/nginx/nginx.conf .
 ```
 Now let's configure the nginx.conf file as shown below
-```
-
-Configured nginx.conf file
 
 <pre>
 user  nginx;
