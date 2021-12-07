@@ -197,5 +197,31 @@ kubectl get rs
 
 You may also check the pods created part of the deployment
 ```
+kubectl get pods
+kubectl get pod
+kubectl get po
+```
+
+Check the number of nginx pods running before scaling up
+```
+kubectl get po
+```
+
+You can scale up the deployment
+```
+kubectl scale deploy/nginx --replicas=5
+```
+
+Check the number of nginx pods running after scaling up
+```
+kubectl get po
+```
+You can scale down the deployment
+```
+kubectl scale deploy/nginx --replicas=3
+```
+
+Check the number of nginx pods running after scaling down
+```
 kubectl get po
 ```
