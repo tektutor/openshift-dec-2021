@@ -126,7 +126,10 @@ newgrp docker
 docker images
 ```
 
-### Before you can start using the K8s cluster, you need to install kubectl 
+### Before you can start using the K8s cluster, you need to install kubectl ( do this as rps user )
 ```
+cd /home/rps/Downloads
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
 ```
