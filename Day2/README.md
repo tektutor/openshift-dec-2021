@@ -275,3 +275,23 @@ The other way to access the nodeport service is via its service name(service dis
 curl http://<nodeport-servicename>:<service-port>
 curl http://nginx:80
 ```
+
+### Creating a ClusterIP(internal) service
+```
+kubectl delete svc/nginx
+kubectl expose deploy/nginx --type=ClusterIp --port=80
+```
+
+You may now find details about clusterip service as shown below
+```
+kubectl describe svc/nginx
+```
+
+In order to access the ClusterIP service, we need get inside the cluster.
+```
+minikube ssh
+kubectl exec -it some-pod-name sh
+curl http://<clusterip-service-cluster-ip>:<service-port>
+curl http://nginx:80
+
+```
