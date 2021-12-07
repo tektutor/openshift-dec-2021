@@ -149,3 +149,23 @@ To see the control plane components in master node
 kubectl get po -n kube-system
 ```
 kube-system is the namespace where typically all master node components run(live).
+
+### Kubernetes abstraction objects
+
+- user-definied applictions are deployed as Deployments
+- Deployment further creates Replicaset to manage the Pods
+- Pod - a group of related containers
+- The smallest unit that can be deployed in K8s cluster is Pod
+- Unlike Docker, where every container gets an IP address, in K8s IP address is assigned on the Pod level
+  not on the container level
+- Deployments supports Rolling update
+- Through Rolling update, you can upgrade your application from one version to the other
+- You could also rollback from latest to previous or any particular version
+- ReplicaSet supports scaling up/down the number of Pods 
+- You application runs with Pod
+- Deployment manages ReplicaSet
+- ReplicaSet manages Pod
+- containers are created within Pod
+- application runs within container
+- container has your application and any dependent library or servers, etc
+- container can be created either using Docker or LXC, CRI-O, Rkt, Podman, etc.,
