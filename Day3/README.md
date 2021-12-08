@@ -124,7 +124,10 @@ sudo vim /etc/docker/daemon.json
     "overlay2.override_kernel_check=true"
   ]
 }
+```
 
+Apply the above config changes
+```
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo systemctl daemon-reload
 sudo systemctl enable docker && sudo systemctl start docker
