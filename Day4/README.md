@@ -43,7 +43,7 @@ This is how replicaset selects its respective pods
 kubectl get po -l app=nginx
 ```
 
-### In case you haven't clone TekTutor repository yet 
+### In case you haven't cloned TekTutor repository yet 
 ```
 cd /home/rps
 git clone https://github.com/tektutor/openshift-dec-2021.git
