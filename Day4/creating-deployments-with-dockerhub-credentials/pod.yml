@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod 
+spec:
+  containers:
+  - name: private-reg-container
+    image: tektutor/python-hello-ms:4.0 
+  imagePullSecrets:
+  - name: myregistrykey 
