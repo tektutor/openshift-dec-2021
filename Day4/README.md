@@ -43,9 +43,16 @@ This is how replicaset selects its respective pods
 kubectl get po -l app=nginx
 ```
 
+### In case you haven't clone TekTutor repository yet 
+```
+cd /home/rps
+git clone https://github.com/tektutor/openshift-dec-2021.git
+cd /home/rps/openshift-dec-2021
+```
+
 ### K8s deployment using ConfigMaps
 ```
-cd ~/openshift-dec-2021
+cd /home/rps/openshift-dec-2021
 git pull
 cd Day4/configmaps
 kubectl apply -f configmap.yml
