@@ -149,7 +149,6 @@ The expected output is
 <pre>
 [root@master ingress]# kubectl get svc
 NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
-<b>hello-ms     LoadBalancer   10.107.203.234   172.16.95.242   80:30465/TCP   5m51s</b>
 kubernetes   ClusterIP      10.96.0.1        <none>          443/TCP        24h
 <b>nginx        LoadBalancer   10.111.184.255   172.16.95.240   80:30621/TCP   9m42s</nginx>
 </pre>
