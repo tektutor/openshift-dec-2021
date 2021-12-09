@@ -158,3 +158,12 @@ You may now access the loadbalancer service as shown below
 ```
 curl 172.16.95.240:80
 ```
+
+### What is an Ingress in Kubernetes ?
+- Ingress is a routing rule that you define for different application services you exposed.
+- Ingress can route calls to any time of K8s services ( NodePort, ClusterIP, LoadBalancer, etc., )
+- You need an Ingress Controller that monitors new Ingress, or change in ingress and update those configurations
+  on the fly in some Load Balancer(in our case Metallb).
+- Ingress Controller comes out of the box in any cloud environment (AWS, Azure, GCP, etc.,)
+- In case of on-prem bare-metal environments, we need to explicitly create Ingress Controllers and LoadBalancer
+  before be define Ingress rules.
