@@ -69,3 +69,10 @@ List the svc
 kubectl get svc
 kubectl describe svc/hello-ms
 ```
+
+You may now access the hello-ms nodeport service 
+```
+curl http://master:31500/hello
+curl http://node1:31500/hello
+curl http://node2:31500/hello
+```
