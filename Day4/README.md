@@ -111,3 +111,33 @@ kubectl rollout undo deploy/nginx
 ```
 
 K8s will create one replicaset per version of image under the same deployment.
+
+### Deploying MetalLB LoadBalancer in K8s cluster
+```
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+```
+
+You need to edit the configmap.yml in the openshift-dec-2021/metallb folder 
+and the update IP Address from 
+```
+172.16.95.240-172.16.95.250 to 192.168.10.10-192.168.10.15
+```
+The 192.168.10.x 192.168.10.y range each one is choosing shouldn't conflict. Each one of you could assign 5 unique IP range for the Metallb Load Balancer.
+
+Check if the metallb is running
+```
+kubectl get all -n metallb-system
+```
+
+You may now create some LoadBalancer service for an existing deployment
+```
+kubectl delete svc/nginx 
+kubectl expose deploy/nginx --type=LoadBalancer --port=80
+```
+
+You can check the load balancer is assigned with an external IP
+```
+kubectl get svc
+```
+
