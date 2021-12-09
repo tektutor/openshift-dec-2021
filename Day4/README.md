@@ -158,6 +158,14 @@ You may now access the loadbalancer service as shown below
 ```
 curl 172.16.95.240:80
 ```
+### What is Helm?
+- is a package manager for Kubernetes and OpenShift
+- it let's package your application deployments, services and related manifest files in standard format
+- helm helps you install, uninstall, upgrade and manage your application deployments in K8s and OpenShift
+- the packaged application is called as Chart(s)
+- there are 2 major verions 2.x and 3.x
+- In 2.x Helm will install a component called Tiller which resides inside K8s cluster
+- In 3.x Helm can deploy K8s applications without Tiller, we will using Helm 3
 
 ### What is an Ingress in Kubernetes ?
 - Ingress is a routing rule that you define for different application services you exposed.
@@ -167,3 +175,4 @@ curl 172.16.95.240:80
 - Ingress Controller comes out of the box in any cloud environment (AWS, Azure, GCP, etc.,)
 - In case of on-prem bare-metal environments, we need to explicitly create Ingress Controllers and LoadBalancer
   before be define Ingress rules.
+
