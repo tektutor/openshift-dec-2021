@@ -42,3 +42,30 @@ This is how replicaset selects its respective pods
 ```
 kubectl get po -l app=nginx
 ```
+
+### K8s deployment using ConfigMaps
+```
+cd ~/openshift-dec-2021
+git pull
+cd Day4/configmaps
+kubectl apply -f configmap.yml
+kubectl apply -f python-rest-dep.yml
+```
+
+Checking the configmap and deployments
+```
+kubectl get configmaps
+kubectl get configmap
+kubectl get cm
+```
+
+List the deploy to check the hello-ms deployment
+```
+kubectl get deploy
+```
+
+List the svc
+```
+kubectl get svc
+kubectl describe svc/hello-ms
+```
