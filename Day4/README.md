@@ -167,6 +167,20 @@ curl 172.16.95.240:80
 - In 2.x Helm will install a component called Tiller which resides inside K8s cluster
 - In 3.x Helm can deploy K8s applications without Tiller, we will using Helm 3
 
+### Installing Helm Kubernetes Package Manager in your Lab machine
+```
+cd /home/rps/openshift-dec-2021
+git pull
+cd Day4/ingress
+./get_helm.sh
+```
+### Setting up HELM Ingress repository
+```
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm repo list
+```
+
 ### What is an Ingress in Kubernetes ?
 - Ingress is a routing rule that you define for different application services you exposed.
 - Ingress can route calls to any time of K8s services ( NodePort, ClusterIP, LoadBalancer, etc., )
@@ -175,4 +189,109 @@ curl 172.16.95.240:80
 - Ingress Controller comes out of the box in any cloud environment (AWS, Azure, GCP, etc.,)
 - In case of on-prem bare-metal environments, we need to explicitly create Ingress Controllers and LoadBalancer
   before be define Ingress rules.
+
+### Installing Nginx Controller
+
+```
+cd /home/rps/openshift-dec-2021
+git pull
+cd Day4/ingress
+
+helm upgrade --install myingress ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --values values.yml
+```
+Verify if ingress controller is ready
+```
+kubectl get all -n ingress-nginx
+```
+
+### Creating Ingress Rules
+```
+cd /home/rps/openshift-dec-2021
+git pull
+cd Day4/ingress
+
+kubectl apply -f ingress.yml
+```
+
+### Listing the ingress resource
+```
+kubectl get ingress -w
+```
+The expected output is
+<pre>
+[root@master ingress]# kubectl get ingress
+NAME               CLASS    HOSTS                   ADDRESS         PORTS   AGE
+tektutor-ingress   <none>   tektutor.training.org   172.16.95.241   80      8h
+</pre>
+
+You may find more details about the ingress service as shown below
+```
+kubectl describe ingress/tektutor-ingress
+```
+The expected output is
+<pre>
+[root@master ingress]# kubectl describe ingress/tektutor-ingress 
+Name:             tektutor-ingress
+Labels:           <none>
+Namespace:        default
+Address:          172.16.95.241
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                   Path  Backends
+  ----                   ----  --------
+  tektutor.training.org  
+                         /nginx   nginx:80 (192.168.104.51:80,192.168.104.52:80,192.168.166.170:80)
+Annotations:             kubernetes.io/ingress.class: nginx
+                         nginx.ingress.kubernetes.io/rewrite-target: /
+Events:                  <none>
+</pre>
+
+Initialling the Address will be empty and in some time, K8s will assign an IP in the range in configured the metallb load balancer.
+
+You need to append an entry in the /etc/hosts file
+```
+[root@master ingress]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+172.16.95.129	master
+172.16.95.130	node1
+172.16.95.131	node2
+172.16.95.241   tektutor.training.org
+```
+You need to replace 172.16.95.241 with the IP address that shows up in your ingress.
+
+Once /etc/hosts file is updated, you may now access your ingress as shown below
+```
+curl tektutor.training.org/nginx
+```
+The expected output is
+<pre>
+[root@master ingress]# curl tektutor.training.org/nginx
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+</pre>
+
 
