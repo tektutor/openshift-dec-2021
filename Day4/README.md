@@ -152,6 +152,7 @@ NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
 kubernetes   ClusterIP      10.96.0.1        <none>          443/TCP        24h
 <b>nginx        LoadBalancer   10.111.184.255   172.16.95.240   80:30621/TCP   9m42s</b>
 </pre>
+In the above nginx LoadBalancer service, observe the external IP, it would be in the range of IP that you configured in the configmap.yml.
 
 You may now access the loadbalancer service as shown below
 ```
