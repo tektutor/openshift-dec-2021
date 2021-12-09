@@ -125,6 +125,11 @@ and the update IP Address from
 ```
 The 192.168.10.x 192.168.10.y range each one is choosing shouldn't conflict. Each one of you could assign 5 unique IP range for the Metallb Load Balancer.
 
+Once you have updated the IP range you wish to assign for the Metallb LoadBalancer services you may create
+```
+kubectl apply -f configmap.yml
+```
+
 Check if the metallb is running
 ```
 kubectl get all -n metallb-system
