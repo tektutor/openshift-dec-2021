@@ -118,7 +118,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manif
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
 ```
 
-You need to edit the configmap.yml in the openshift-dec-2021/metallb folder 
+You need to edit the configmap.yml in the openshift-dec-2021/Day4/metallb folder 
 and the update IP Address from 
 ```
 172.16.95.240-172.16.95.250 to 192.168.10.10-192.168.10.15
@@ -145,4 +145,11 @@ You can check the load balancer is assigned with an external IP
 ```
 kubectl get svc
 ```
-
+The expected output is
+<pre>
+[root@master ingress]# kubectl get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+<b>hello-ms     LoadBalancer   10.107.203.234   172.16.95.242   80:30465/TCP   5m51s</b>
+kubernetes   ClusterIP      10.96.0.1        <none>          443/TCP        24h
+<b>nginx        LoadBalancer   10.111.184.255   172.16.95.240   80:30621/TCP   9m42s</nginx>
+</pre>
