@@ -83,3 +83,31 @@ curl http://master:31500/hello
 curl http://node1:31500/hello
 curl http://node2:31500/hello
 ```
+
+### Rolling update
+Assuming you already have an nginx deploy of image=nginx:1.8 running. You need to edit the image version from 1.18 to 1.19, save and exit.
+```
+kubectl edit deploy/nginx
+```
+
+You can now verify the deploy, rs and pod
+```
+kubectl get deploy,rs,po
+```
+
+You can check the status of the rolling update 
+```
+kubectl rollout status deploy/nginx
+```
+
+Now you can check the image version in the nginx deploy. You don't have to modify anything, you may quit vim.
+```
+kubectl edit deploy/nginx
+```
+
+If required, you may even undo the rolling update
+```
+kubectl rollout undo deploy/nginx
+```
+
+K8s will create one replicaset per version of image under the same deployment.
