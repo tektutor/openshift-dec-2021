@@ -112,7 +112,7 @@ kubectl rollout undo deploy/nginx
 
 K8s will create one replicaset per version of image under the same deployment.
 
-### Deploying MetalLB LoadBalancer in K8s cluster
+### Deploying MetalLB LoadBalancer in our on-prem K8s cluster
 ```
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
