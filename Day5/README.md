@@ -33,6 +33,16 @@ sudo mv oc /usr/local/bin
 cd /home/rps
 ```
 
+### Applying Docker image pull secrets
+```
+oc create secret docker-registry dockerhub-registry-secrets --docker-server=<docker-registry-url> \
+   --docker-username=<your-docker-username> --docker-password=<your-dockerhub-password> \
+   --docker-email=<your-dockerhub-email>
+
+oc sercrets link default dockerhub-registry-secrets --for=pull
+```
+
+
 ### Deploying your application into OpenShift RedHat Sandbox
 1. Login as a Developer
 2. Click on Add menu on the left side
