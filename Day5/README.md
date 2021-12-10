@@ -33,7 +33,14 @@ sudo mv oc /usr/local/bin
 cd /home/rps
 ```
 
+### Deploying your application into OpenShift RedHat Sandbox
+1. Login as a Developer
+2. Click on Add menu on the left side
+3. Select Import from Git
+4. In the Git URL field, paste the URL https://github.com/tektutor/spring-ms.git
+5. Create Button
 
+This will create build, as part of the build once the code is compiled, it prepares a Podman image, pushes the image to OpenShift's Private ImageStream Registry. From the newly pushed image in ImageStream it deploys your application with a single Pod. OpenShift also creates a service for your deployment and it exposes a route. Route is a publicly accessible URL.
 
 
 ## Installing OpenShift in CentOS 7.7
