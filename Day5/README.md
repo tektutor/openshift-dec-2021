@@ -187,8 +187,6 @@ oc cluster up
 
 Troubleshooting oc cluster up failures
 ```
-Restart Docker to apply config changes
-```
 oc cluster down
 sudo systemctl daemon-reload
 sudo systemctl enable docker
