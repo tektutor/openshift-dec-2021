@@ -21,12 +21,16 @@ Download openshift client tool
 ```
 https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.10/x86_64/product-software
 ```
+
 You need to download the OpenShift v4.9 Linux Client from the above URL.
 
 Extract the zip file
 ```
 cd /home/rps/Downloads
 tar xvfz oc-4.9.10-linux.tar.gz
+mv kubectl /usr/local/bin
+mv oc /usr/local/bin
+cd /home/rps
 ```
 
 
