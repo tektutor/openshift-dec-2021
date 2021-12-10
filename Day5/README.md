@@ -33,7 +33,7 @@ sudo mv oc /usr/local/bin
 cd /home/rps
 ```
 
-### Applying Docker image pull secrets
+### Applying Docker image pull secrets in OpenShift
 ```
 oc create secret docker-registry dockerhub-registry-secrets --docker-server=<docker-registry-url> \
    --docker-username=<your-docker-username> --docker-password=<your-dockerhub-password> \
