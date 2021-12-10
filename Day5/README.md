@@ -185,6 +185,17 @@ Start our OpenShift Cluster
 oc cluster up
 ```
 
+Troubleshooting oc cluster up failures
+```
+Restart Docker to apply config changes
+```
+oc cluster down
+sudo systemctl daemon-reload
+sudo systemctl enable docker
+sudo systemctl restart docker
+oc cluster up
+```
+
 Login to OpenShift console via CLI as administrator
 ```
 oc login -u system:admin
