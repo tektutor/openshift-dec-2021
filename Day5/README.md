@@ -173,6 +173,13 @@ Verify OpenShift version
 oc version
 ```
 
+Restart Docker to apply config changes
+```
+sudo systemctl daemon-reload
+sudo systemctl enable docker
+sudo systemctl restart docker
+```
+
 Start our OpenShift Cluster
 ```
 oc cluster up
