@@ -35,7 +35,7 @@ cd /home/rps
 
 ### Applying Docker image pull secrets in OpenShift
 ```
-oc create secret docker-registry dockerhub-registry-secrets --docker-server=<docker-registry-url> \
+oc create secret docker-registry dockerhub-registry-secrets --docker-server=https://index.docker.io/v1 \
    --docker-username=<your-docker-username> --docker-password=<your-dockerhub-password> \
    --docker-email=<your-dockerhub-email>
 
