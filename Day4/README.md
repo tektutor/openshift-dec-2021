@@ -295,3 +295,32 @@ Commercial support is available at
 </pre>
 
 
+### Using flannel CNI in K8s cluster
+Since we already have setup our K8s cluster with Calico CNI, we need to reset before we can use any other CNI. Especially in this, flannel uses a different pod-cidr-network i.e 10.244.0.0/16 as opposed to 192.168.0.0/16 in case of Calico.
+
+This must be done on master, node1 and node2
+```
+kubeadm reset
+```
+Manually, we need to clean up the below folders
+```
+su -
+rm -rf /etc/cni/net.d
+rm -rf /etc/kubernetes
+rm -rf /root/.kube
+rm -rf /home/rps/.kube
+rm -rf /etc/lib/kubelet
+```
+
+On the master node, we need to bootstrap master with pod-cidr-network 10.244.0.0/16
+```
+kubeadm init --pod-network-cidr=10.244.0.0/16
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+```
+
+On the node1 and node2, you need to use the newly generated join tokens as we did earlier.
+
+### Using weave CNI
+```
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+```
