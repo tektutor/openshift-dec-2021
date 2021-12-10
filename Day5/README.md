@@ -52,6 +52,55 @@ oc secrets link default dockerhub-registry-secrets --for=pull
 
 This will create build, as part of the build once the code is compiled, it prepares a Podman image, pushes the image to OpenShift's Private ImageStream Registry. From the newly pushed image in ImageStream it deploys your application with a single Pod. OpenShift also creates a service for your deployment and it exposes a route. Route is a publicly accessible URL.
 
+### Finding if jenkins templates is available in openshift
+```
+oc get templates -n openshift | grep jenkins
+```
+
+### Let's create a new application jenkins-ephemeral
+```
+oc new-app jenkins-ephemeral
+```
+
+### Retrieve the jenkins route(public url)
+```
+oc get routes
+```
+
+### In case you are curious to look inside the template
+```
+oc get template/jenkins-ephemeral -o json -n openshift
+```
+
+### Let's create a buildconfig to setup nodejs pipeline
+```
+oc create -f https://raw.githubusercontent.com/openshift/origin/master/examples/jenkins/pipeline/nodejs-sample-pipeline.yaml
+```
+
+### You may see the pipeline created
+```
+oc get buildconfig/nodejs-sample-pipeline -o yaml
+```
+
+### See the buildconfigs
+```
+oc get buildconfigs
+```
+
+### Let's start the build now
+```
+oc start-build nodejs-sample-pipeline
+```
+Now watch the activities in the Jenkins !
+
+### If all goes well, you should be able to see a route for nodejs application
+```
+oc get routes
+```
+You can copy & paste the route url to see the nodejs webpage.
+
+
+You may copy the jenkins route url and access jenkins from the web browser
 
 ## Installing OpenShift in CentOS 7.7
 - We will install OpenShift v3.11 in the CentOS 7.7 Virtual Machine which is blank with no softwares
