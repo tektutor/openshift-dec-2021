@@ -28,8 +28,8 @@ Extract the zip file
 ```
 cd /home/rps/Downloads
 tar xvfz oc-4.9.10-linux.tar.gz
-mv kubectl /usr/local/bin
-mv oc /usr/local/bin
+sudo mv kubectl /usr/local/bin
+sudo mv oc /usr/local/bin
 cd /home/rps
 ```
 
