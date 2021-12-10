@@ -15,6 +15,23 @@
 - OpenShift project is nothing but a namespace, hence project names must be unique within OpenShift
 
 
+### Using RedHat OpenShift Sandbox CLI from master VM
+
+Download openshift client tool
+```
+https://access.redhat.com/downloads/content/290/ver=4.9/rhel---8/4.9.10/x86_64/product-software
+```
+You need to download the OpenShift v4.9 Linux Client from the above URL.
+
+Extract the zip file
+```
+cd /home/rps/Downloads
+tar xvfz oc-4.9.10-linux.tar.gz
+```
+
+
+
+
 ## Installing OpenShift in CentOS 7.7
 - We will install OpenShift v3.11 in the CentOS 7.7 Virtual Machine which is blank with no softwares
   installed at this point.
