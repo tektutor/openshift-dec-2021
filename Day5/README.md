@@ -39,7 +39,7 @@ oc create secret docker-registry dockerhub-registry-secrets --docker-server=<doc
    --docker-username=<your-docker-username> --docker-password=<your-dockerhub-password> \
    --docker-email=<your-dockerhub-email>
 
-oc sercrets link default dockerhub-registry-secrets --for=pull
+oc secrets link default dockerhub-registry-secrets --for=pull
 ```
 
 
