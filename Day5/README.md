@@ -15,7 +15,7 @@
 - OpenShift project is nothing but a namespace, hence project names must be unique within OpenShift
 
 
-### Using RedHat OpenShift Sandbox CLI from master VM
+### Using RedHat OpenShift Sandbox v4.9 CLI from master VM
 
 Download openshift client tool
 ```
