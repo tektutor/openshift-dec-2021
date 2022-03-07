@@ -69,7 +69,7 @@ sudo firewall-cmd --permanent --add-port=6443/tcp
 sudo firewall-cmd --permanent --add-port=2379-2380/tcp
 sudo firewall-cmd --permanent --add-port=10250-10252/tcp
 sudo firewall-cmd --permanent --add-port=10255/tcp
-sudofirewall-cmd --permanent --add-masquerade
+sudo firewall-cmd --permanent --add-masquerade
 sudo firewall-cmd --permanent --zone=trusted  --add-source=192.168.0.0/16 
 sudo modprobe br_netfilter
 sudo systemctl daemon-reload
