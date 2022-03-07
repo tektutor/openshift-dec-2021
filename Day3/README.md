@@ -52,7 +52,7 @@ ifconfig ens33
 ```
 Note down the IP of worker2 node as we need to add this in the /etc/hosts later.
 
-### Configure /etc/hosts file
+### Configure /etc/hosts file ( do it as root user )
 Append the IPAddresses of master, worker1 and worker2 as shown below in /etc/hosts files. This should be done in master, worker1 and worker2 nodes.
 ```
 192.168.254.129 master 
@@ -63,32 +63,34 @@ Append the IPAddresses of master, worker1 and worker2 as shown below in /etc/hos
 ### Firewall configurations
 For summary of ports that must be opened, refer official Kubernetes documention https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
-#### Open the below ports in Master Node as root user
+#### Open the below ports in Master Node
 ```
-firewall-cmd --permanent --add-port=6443/tcp
-firewall-cmd --permanent --add-port=2379-2380/tcp
-firewall-cmd --permanent --add-port=10250-10252/tcp
-firewall-cmd --permanent --add-port=10255/tcp
-firewall-cmd --permanent --add-masquerade
-firewall-cmd --permanent --zone=trusted  --add-source=192.168.0.0/16 
-modprobe br_netfilter
-systemctl daemon-reload
-systemctl restart firewalld
-systemctl status firewalld
-firewall-cmd --list-all
+sudo firewall-cmd --permanent --add-port=6443/tcp
+sudo firewall-cmd --permanent --add-port=2379-2380/tcp
+sudo firewall-cmd --permanent --add-port=10250-10252/tcp
+sudo firewall-cmd --permanent --add-port=10255/tcp
+sudofirewall-cmd --permanent --add-masquerade
+sudo firewall-cmd --permanent --zone=trusted  --add-source=192.168.0.0/16 
+sudo modprobe br_netfilter
+sudo systemctl daemon-reload
+sudo systemctl restart firewalld
+sudo systemctl status firewalld
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
 ```
 
-#### Open the below ports in Worker Nodes as root user
+#### Open the below ports in Worker Nodes
 ```
-firewall-cmd --permanent --add-port=10250/tcp
-firewall-cmd --permanent --add-port=30000-32767/tcp
-firewall-cmd --permanent --add-masquerade
-firewall-cmd --permanent --zone=trusted  --add-source=192.168.0.0/16 
-modprobe br_netfilter
-systemctl daemon-reload
-systemctl restart firewalld
-systemctl status firewalld
-firewall-cmd --list-all
+sudo firewall-cmd --permanent --add-port=10250/tcp
+sudo firewall-cmd --permanent --add-port=30000-32767/tcp
+sudo firewall-cmd --permanent --add-masquerade
+sudo firewall-cmd --permanent --zone=trusted  --add-source=192.168.0.0/16 
+sudo modprobe br_netfilter
+sudo systemctl daemon-reload
+sudo systemctl restart firewalld
+sudo systemctl status firewalld
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
 ```
 
 #### Install Docker CE in Master and Worker Nodes
