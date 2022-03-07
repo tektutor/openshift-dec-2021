@@ -11,7 +11,7 @@ sudo systemctl daemon-reload
 
 #### Disable SELINUX in Master and Worker Nodes
 ``` 
-setenforce 0
+sudo setenforce 0
 ```
 
 To permanently disable  SELINUX, you need to edit /etc/selinux/config file and change enforcing to disabled.
