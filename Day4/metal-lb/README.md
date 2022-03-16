@@ -2,6 +2,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manif
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
 
+<pre>
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -14,3 +15,4 @@ data:
       protocol: layer2
       addresses:
       - 172.16.95.240-172.16.95.250
+ </pre>
